@@ -1,0 +1,18 @@
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: jenkins
+spec:
+  secretName: jenkins
+  issuerRef:
+    name: letsencrypt
+    kind: ClusterIssuer
+  commonName: jenkins.kwk8s.tech
+  dnsNames:
+  - jenkins.kwk8s.tech
+  acme:
+    config:
+    - dns01:
+        ingressClass: nginx
+      domains:
+      - jenkins.kwk8s.tech
