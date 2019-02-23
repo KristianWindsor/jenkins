@@ -15,7 +15,16 @@ spec:
         - name: jenkins
           image: jenkins/jenkins
           ports:
-            - containerPort: 80
+            - containerPort: 8080
           resources:
             requests:
               cpu: 0m
+          volumeMounts:
+            - name: jenkins-storage
+              mountPath: /var/jenkins_home/
+      volumes:
+        - name: jenkins-storage
+          persistentVolumeClaim:
+            claimName: jenkins-storage
+      securityContext:
+        runAsUser: 0

@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jenkins
+  name: jenkins-ingress
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -17,7 +17,7 @@ spec:
       - path: /
         backend:
           serviceName: jenkins
-          servicePort: 80
+          servicePort: 8080
   tls:
   - secretName: jenkins
     hosts:
