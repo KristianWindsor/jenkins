@@ -19,6 +19,6 @@ spec:
           serviceName: jenkins
           servicePort: 8080
   tls:
-  - secretName: jenkins
+  - secretName: jenkins-cert
     hosts:
     - jenkins.kwk8s.tech
