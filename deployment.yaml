@@ -16,12 +16,21 @@ spec:
           image: kristianwindsor/jenkins
           ports:
             - containerPort: 8080
+          env:
+           - name: DOCKER_HOST
+             value: tcp://localhost:2375
           resources:
             requests:
               cpu: 0m
           volumeMounts:
             - name: jenkins-storage
               mountPath: /var/jenkins_home/
+        - name: docker
+          image: docker:18.09.8-dind
+          ports:
+            - containerPort: 2375
+          securityContext:
+            privileged: true
       volumes:
         - name: jenkins-storage
           persistentVolumeClaim:

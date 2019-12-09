@@ -4,6 +4,13 @@ services:
     build: .
     ports:
       - 8080:8080
+    environment: 
+      - DOCKER_HOST=tcp://docker:2375
     restart: always
     volumes: 
       - ./jenkins_home/:/var/jenkins_home/
+  docker:
+    image: docker:18.09.8-dind
+    ports:
+      - 2375:2375
+    privileged: true
