@@ -11,14 +11,29 @@ spec:
       labels:
         app: jenkins
     spec:
+      serviceAccountName: jenkins
       containers:
         - name: jenkins
           image: kristianwindsor/jenkins
           ports:
             - containerPort: 8080
           env:
-           - name: DOCKER_HOST
-             value: tcp://localhost:2375
+            - name: DOCKER_HOST
+              value: tcp://localhost:2375
+            - name: KUBE_CA
+              valueFrom:
+                secretKeyRef:
+                  name: jenkins-env
+                  key: KUBE_CA
+            - name: KUBE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: jenkins-env
+                  key: KUBE_TOKEN
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/bash", "/postStart.sh"]
           resources:
             requests:
               cpu: 0m
