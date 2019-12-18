@@ -7,7 +7,7 @@ node {
     }
 
     stage('Build Image') {
-        app = docker.build("kristianwindsor/jenkins")
+        app = docker.build("kristianwindsor/kw-jenkins")
     }
 
     stage('Push Image') {
@@ -18,7 +18,7 @@ node {
     }
     stage('Deploy') {
         sh """
-            sed -i "s/jenkins.*/jenkins:$buildname/" deployment.yaml
+            sed -i "s/kristianwindsor\\/jenkins.*/kristianwindsor\\/jenkins:$buildname/" deployment.yaml
             kubectl apply -f deployment.yaml
         """
     }
