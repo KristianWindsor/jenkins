@@ -7,7 +7,7 @@ node {
     }
 
     stage('Build Image') {
-        app = docker.build("kristianwindsor/kw-jenkins")
+        app = docker.build("kristianwindsor/jenkins")
     }
 
     stage('Push Image') {
