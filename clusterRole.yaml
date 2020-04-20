@@ -3,6 +3,6 @@ kind: ClusterRole
 metadata:
   name: jenkins
 rules:
-- apiGroups: ["extensions"]
+- apiGroups: ["apps"]
   resources: ["deployments"]
   verbs: ["get", "patch"]
