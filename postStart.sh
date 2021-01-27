@@ -9,7 +9,7 @@ clusters:
 - name: kwk8s.tech
   cluster:
     certificate-authority-data: ${KUBE_CA}
-    server: https://api.cluster03.kwk8s.tech
+    server: https://${KUBE_URL}
 contexts:
 - name: jenkins
   context:

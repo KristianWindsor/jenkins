@@ -6,6 +6,7 @@ services:
       - 8080:8080
     environment: 
       - DOCKER_HOST=tcp://docker:2375
+      - KUBE_URL=54.153.89.181:6443
     restart: always
     volumes: 
       - ./jenkins_home/:/var/jenkins_home/
