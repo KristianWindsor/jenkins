@@ -24,7 +24,7 @@ spec:
             - name: DOCKER_HOST
               value: tcp://localhost:2375
             - name: KUBE_URL
-              value: 54.153.89.181:6443
+              value: 54.183.109.59:6443
             - name: KUBE_CA
               valueFrom:
                 secretKeyRef:
