@@ -39,13 +39,13 @@ spec:
             postStart:
               exec:
                 command: ["/bin/bash", "/postStart.sh"]
-          resources:
-            requests:
-              memory: "320Mi"
-              cpu: "160m"
-            limits:
-              memory: "640Mi"
-              cpu: "320m"
+          # resources:
+          #   requests:
+          #     memory: "320Mi"
+          #     cpu: "160m"
+          #   limits:
+          #     memory: "640Mi"
+          #     cpu: "320m"
           volumeMounts:
             - name: jenkins-storage
               mountPath: /var/jenkins_home/
@@ -53,13 +53,13 @@ spec:
           image: docker:18.09.8-dind
           ports:
             - containerPort: 2375
-          resources:
-            requests:
-              memory: "160Mi"
-              cpu: "80m"
-            limits:
-              memory: "320Mi"
-              cpu: "160m"
+          # resources:
+          #   requests:
+          #     memory: "160Mi"
+          #     cpu: "80m"
+          #   limits:
+          #     memory: "320Mi"
+          #     cpu: "160m"
           securityContext:
             privileged: true
       volumes:
